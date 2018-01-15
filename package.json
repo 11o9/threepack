@@ -1,0 +1,17 @@
+{
+  "name": "webpack-starter",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "author": "11o9",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.89.0"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.0"
+  }
+}
