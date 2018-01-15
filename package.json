@@ -2,7 +2,8 @@
   "name": "webpack-starter",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "npm run build && echo \"Not yet implemented\""
   },
   "author": "11o9",
   "license": "MIT",
