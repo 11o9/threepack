@@ -13,10 +13,20 @@ module.exports = {
     filename: 'bundle.js',
   },
 
+  resolve: {
+    alias: {
+      'three/OrbitControls': path.join(__dirname, 'node_modules/three/examples/js/controls/OrbitControls.js'),
+      'three/OBJLoader': path.join(__dirname, 'node_modules/three/examples/js/loaders/OBJLoader.js')
+    }
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(SRC_PATH, 'index.html'),
     }),
+    new HtmlWebpackPlugin.ProvidePlugin({
+      'THREE': 'three'
+    })
   ],
 
   devtool: 'cheap-module-inline-source-map',
@@ -24,4 +34,6 @@ module.exports = {
   devServer: {
     open: true
   },
+
+
 };
