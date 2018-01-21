@@ -20,6 +20,14 @@ $ npm i
 $ npm start
 ```
 
+## Clone
+```bash
+$ git clone https://github.com/11o9/threepack.git
+$ git pull
+
+$ npm i
+```
+
 ## Deployment
 ```bash
 $ npm i
