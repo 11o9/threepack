@@ -45,12 +45,13 @@ function init() {
     }
   }
 
-	//raycaster
+  //raycaster
   raycaster = new THREE.Raycaster();
 
 	console.log(raycaster);
   //renderer
-  renderer = new THREE.CanvasRenderer();
+  renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer(); // Fallback to canvas renderer, if necessary.
+
   renderer.setSize(window.innerWidth, window.innerHeight);
 
   //add canvas to document
@@ -81,15 +82,33 @@ function animate() {
   var intersects = raycaster.intersectObjects( scene.children );
   if ( intersects.length > 0 ) {
     if ( INTERSECTED != intersects[ 0 ].object ) {
-      if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-      INTERSECTED = intersects[ 0 ].object;
-      INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-      INTERSECTED.material.emissive.setHex( 0xff0000 );
-      INTERSECTED.rotation.x += 0.1;
-      INTERSECTED.rotation.y += 0.1;
+      if ( INTERSECTED ) {
+        //INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+        INTERSECTED.rotation.x = 0; INTERSECTED.rotation.y = 0;
+      }
+        INTERSECTED = intersects[ 0 ].object;
+        INTERSECTED.rotation.x += 1;
+        INTERSECTED.rotation.y += 1;
+
+
+        if(INTERSECTED.scale.x == 2) {
+            INTERSECTED.scale.x = 1;
+            INTERSECTED.scale.y = 1;
+            INTERSECTED.scale.z = 1;
+        }
+        else{
+            INTERSECTED.scale.x = 2;
+            INTERSECTED.scale.y = 2;
+            INTERSECTED.scale.z = 2;
+        }
+       
+
+      //INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
+      //INTERSECTED.material.color.setHex( 0xff0000 );
+     
     }
   } else {
-    if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+    if ( INTERSECTED ) {INTERSECTED.rotation.x = 0; INTERSECTED.rotation.y = 0;} //INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
     INTERSECTED = null;
   }
 

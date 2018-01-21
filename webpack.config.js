@@ -24,9 +24,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(SRC_PATH, 'index.html'),
     }),
-    new HtmlWebpackPlugin.ProvidePlugin({
-      'THREE': 'three'
-    })
+    // new HtmlWebpackPlugin.ProvidePlugin({
+    //   'THREE': 'three'
+    // }),
   ],
 
   devtool: 'cheap-module-inline-source-map',
